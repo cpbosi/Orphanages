@@ -27,4 +27,8 @@ routes.post("/users", async (request, response) => {
     UsersController.create(request, response);
 });
 
+routes.post("/users/login", async (request, response) => {
+    UsersController.login(request, response);
+});
+
 export default routes;
