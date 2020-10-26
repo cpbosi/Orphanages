@@ -3,6 +3,7 @@ import multer from 'multer';
 import OrphanagesController from './controllers/OrphanagesController';
 import uploadConfig from './config/upload';
 import UsersController from './controllers/UsersController';
+import auth from './middlewares/auth';
 
 const routes = Router();
 const upload = multer(uploadConfig);
@@ -29,6 +30,11 @@ routes.post("/users", async (request, response) => {
 
 routes.post("/users/login", async (request, response) => {
     UsersController.login(request, response);
+});
+
+//habilitado autenticacao apenas nessa rota para testar.
+routes.get('/testauth' , auth, async(request, response) =>{
+    response.send({ok: true});
 });
 
 export default routes;
